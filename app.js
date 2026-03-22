@@ -3,10 +3,55 @@ const commentsHost = document.querySelector("[data-fb-comments]");
 const lazyHeroVideo = document.querySelector(".hero-media video[data-src-mobile]");
 const lazyClosingVideo = document.querySelector(".closing-video-frame video[data-src-mobile]");
 const mysticBar = document.querySelector(".mystic-bar");
+const commentWhatsAppPanel = document.querySelector(".comment-whatsapp-panel");
+const commentWhatsAppForm = document.querySelector("[data-comment-whatsapp-form]");
+const commentWhatsAppInput = document.querySelector("[data-comment-whatsapp-input]");
+const consultationPromo = document.querySelector(".scroll-promo--consultas");
+const fraudPromo = document.querySelector(".scroll-promo--fraude");
+const guidanceSection = document.querySelector("#guidance");
+const processSection = document.querySelector(".process");
+const closingVideoSection = document.querySelector(".closing-video");
+const whatsappBaseUrl = "https://wa.me/573012887371?text=";
+let thirdCommentTrigger = null;
 
 const toggleMysticBar = () => {
   if (!mysticBar) return;
   mysticBar.classList.toggle("is-visible", window.scrollY > 60);
+};
+
+const toggleCommentWhatsAppPanel = () => {
+  if (!commentWhatsAppPanel || !thirdCommentTrigger) return;
+
+  const triggerTop = thirdCommentTrigger.getBoundingClientRect().top + window.scrollY;
+  const shouldShow = window.scrollY + window.innerHeight * 0.4 >= triggerTop;
+
+  commentWhatsAppPanel.classList.toggle("is-visible", shouldShow);
+  document.body.classList.toggle("has-comment-panel", shouldShow);
+};
+
+const setThirdCommentTrigger = () => {
+  if (!commentsHost) return;
+  thirdCommentTrigger = commentsHost.querySelectorAll(".fb-comment")[2] || null;
+  toggleCommentWhatsAppPanel();
+};
+
+const toggleScrollPromos = () => {
+  if (!guidanceSection || !processSection || !closingVideoSection) return;
+
+  const currentLine = window.scrollY + 120;
+  const guidanceBottom = guidanceSection.offsetTop + guidanceSection.offsetHeight - 120;
+  const processTop = processSection.offsetTop - 40;
+  const closingTop = closingVideoSection.offsetTop - 40;
+  const showConsultationPromo = currentLine >= guidanceBottom && currentLine < processTop;
+  const showFraudPromo = currentLine >= processTop && currentLine < closingTop;
+
+  if (consultationPromo) {
+    consultationPromo.classList.toggle("is-visible", showConsultationPromo);
+  }
+
+  if (fraudPromo) {
+    fraudPromo.classList.toggle("is-visible", showFraudPromo);
+  }
 };
 
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -28,7 +73,30 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
 }
 
 toggleMysticBar();
+toggleScrollPromos();
 window.addEventListener("scroll", toggleMysticBar, { passive: true });
+window.addEventListener("scroll", toggleScrollPromos, { passive: true });
+window.addEventListener("scroll", toggleCommentWhatsAppPanel, { passive: true });
+window.addEventListener("resize", toggleCommentWhatsAppPanel);
+window.addEventListener("resize", toggleScrollPromos);
+
+if (commentWhatsAppForm && commentWhatsAppInput) {
+  commentWhatsAppForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const message = commentWhatsAppInput.value.trim();
+    if (!message) {
+      commentWhatsAppInput.focus();
+      return;
+    }
+
+    const whatsappUrl = `${whatsappBaseUrl}${encodeURIComponent(
+      `Hola, quiero enviar este comentario:\n\n${message}`
+    )}`;
+
+    window.open(whatsappUrl, "_blank", "noopener");
+  });
+}
 
 if (commentsHost) {
   const femaleAvatars = Array.from({ length: 26 }, (_, index) => `images/avatars/w${index + 1}.jpg`);
@@ -216,6 +284,7 @@ if (commentsHost) {
 
     commentsHost.appendChild(fragment);
     commentsHost.dataset.loaded = "true";
+    setThirdCommentTrigger();
   };
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -235,6 +304,8 @@ if (commentsHost) {
 
     commentsObserver.observe(commentsHost);
   }
+
+  setThirdCommentTrigger();
 }
 
 if (lazyHeroVideo) {
