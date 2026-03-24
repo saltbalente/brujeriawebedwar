@@ -1967,7 +1967,7 @@ body {
   .signal-bar div,
   .highlights article,
   .gallery-card {
-    min-height: 0;
+    min-height: 280px;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.22);
   }
 
