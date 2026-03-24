@@ -1964,12 +1964,16 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .signal-bar div,
-  .highlights article,
-  .gallery-card {
-    min-height: 280px;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.22);
-  }
+.signal-bar div,
+.highlights article,
+.gallery-card {
+  min-height: 280px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.22);
+}
+
+section.signal-bar.reveal.is-visible div {
+  min-height: 100px;
+}
 
   .gallery-card {
     border-radius: 22px;
