@@ -11,7 +11,7 @@ const fraudPromo = document.querySelector(".scroll-promo--fraude");
 const guidanceSection = document.querySelector("#guidance");
 const processSection = document.querySelector(".process");
 const closingVideoSection = document.querySelector(".closing-video");
-const whatsappBaseUrl = "https://wa.me/573012887371?text=";
+const whatsappBaseUrl = "https://wa.me/12253607317?text=";
 let thirdCommentTrigger = null;
 
 const toggleMysticBar = () => {
