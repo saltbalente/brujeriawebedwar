@@ -145,18 +145,72 @@ if (commentsHost) {
   ];
 
   const times = [
-    "hace 3 min",
-    "hace 8 min",
-    "hace 15 min",
-    "hace 22 min",
-    "hace 39 min",
-    "hace 1 h",
-    "hace 2 h",
-    "hace 4 h",
-    "hace 7 h",
-    "ayer",
-    "hace 2 días",
-    "hace 3 días",
+    "hace 23 horas",
+    "hace 2 dias",
+    "hace 4 dias",
+    "hace 6 dias",
+    "hace 1 semana",
+    "hace 2 semanas",
+    "hace 3 semanas",
+    "hace 1 mes",
+    "hace 2 meses",
+    "hace 3 meses",
+    "hace 5 meses",
+    "hace 8 meses",
+  ];
+
+  const cities = [
+    "Newark, NJ",
+    "Phoenix, AZ",
+    "Austin, TX",
+    "Orlando, FL",
+    "San Diego, CA",
+    "Denver, CO",
+    "Charlotte, NC",
+    "Nashville, TN",
+    "Seattle, WA",
+    "Las Vegas, NV",
+    "Columbus, OH",
+    "San Antonio, TX",
+    "Boston, MA",
+    "Portland, OR",
+    "Detroit, MI",
+    "Tampa, FL",
+    "Baltimore, MD",
+    "Milwaukee, WI",
+    "Sacramento, CA",
+    "Oklahoma City, OK",
+    "Kansas City, MO",
+    "El Paso, TX",
+    "Louisville, KY",
+    "Raleigh, NC",
+    "Omaha, NE",
+    "Minneapolis, MN",
+    "Cleveland, OH",
+    "New Orleans, LA",
+    "Salt Lake City, UT",
+    "Pittsburgh, PA",
+    "Honolulu, HI",
+    "Richmond, VA",
+    "Birmingham, AL",
+    "Boise, ID",
+    "Fresno, CA",
+    "Tulsa, OK",
+    "Albuquerque, NM",
+    "Anchorage, AK",
+    "Reno, NV",
+    "Greensboro, NC",
+    "St. Louis, MO",
+    "Bakersfield, CA",
+    "Madison, WI",
+    "Des Moines, IA",
+    "Little Rock, AR",
+    "Spokane, WA",
+    "Huntsville, AL",
+    "Chattanooga, TN",
+    "Knoxville, TN",
+    "Fort Worth, TX",
+    "Virginia Beach, VA",
   ];
 
   const texts = [
@@ -201,6 +255,7 @@ if (commentsHost) {
       ? texts[index % texts.length]
       : textsMale[index % textsMale.length];
     const time = times[index % times.length];
+    const city = cities[index % cities.length];
     const likes = 1 + ((index * 3) % 12);
     const replies = index % 5 === 0 ? 1 + (index % 2) : 0;
 
@@ -209,6 +264,7 @@ if (commentsHost) {
       avatar,
       text,
       time,
+      city,
       likes,
       replies,
     };
@@ -239,7 +295,7 @@ if (commentsHost) {
 
       const name = document.createElement("strong");
       name.className = "fb-comment-name";
-      name.textContent = comment.name;
+      name.textContent = `${comment.name} · ${comment.city}`;
 
       const time = document.createElement("time");
       time.className = "fb-comment-time";

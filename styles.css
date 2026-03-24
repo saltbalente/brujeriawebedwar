@@ -1,16 +1,16 @@
 :root {
-  --ink: #f9f4ea;
-  --deep: #07080d;
-  --night: #101320;
-  --gold: #ffd670;
-  --mint: #70f7d6;
-  --cyan: #63d2ff;
-  --rose: #ff86b1;
-  --orange: #ffad6a;
-  --panel: rgba(18, 22, 34, 0.82);
-  --gold-strong: rgba(255, 223, 143, 0.92);
-  --gold-mid: rgba(255, 214, 112, 0.5);
-  --gold-soft: rgba(255, 214, 112, 0.22);
+  --ink: #fff3d6;
+  --deep: #070509;
+  --night: #120c1b;
+  --gold: #ff9f2b;
+  --mint: #6bff7a;
+  --cyan: #9f6bff;
+  --rose: #ff6bb5;
+  --orange: #ff7a18;
+  --panel: rgba(18, 10, 26, 0.85);
+  --gold-strong: rgba(255, 171, 71, 0.92);
+  --gold-mid: rgba(255, 159, 43, 0.5);
+  --gold-soft: rgba(255, 159, 43, 0.22);
   --line: var(--gold-mid);
   --line-soft: var(--gold-soft);
   --cut: 2vw;
@@ -48,10 +48,10 @@ body {
   font-family: "Plus Jakarta Sans", sans-serif;
   color: var(--ink);
   background:
-    radial-gradient(circle at 15% 18%, rgba(255, 122, 168, 0.3), transparent 28%),
-    radial-gradient(circle at 88% 10%, rgba(94, 200, 255, 0.3), transparent 26%),
-    radial-gradient(circle at 70% 74%, rgba(110, 243, 207, 0.22), transparent 30%),
-    linear-gradient(165deg, #111527 0%, #0b0d16 55%, #05060b 100%);
+    radial-gradient(circle at 12% 18%, rgba(255, 122, 24, 0.32), transparent 28%),
+    radial-gradient(circle at 88% 10%, rgba(159, 107, 255, 0.28), transparent 26%),
+    radial-gradient(circle at 70% 74%, rgba(107, 255, 122, 0.22), transparent 30%),
+    linear-gradient(165deg, #140c1e 0%, #0c0a12 55%, #050407 100%);
   min-height: 100vh;
 }
 
@@ -239,7 +239,7 @@ body {
   pointer-events: none;
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.08), transparent 26%, transparent 74%, rgba(255, 255, 255, 0.06)),
-    radial-gradient(circle at top right, rgba(255, 255, 255, 0.1), transparent 24%);
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.08), transparent 24%);
 }
 
 .scroll-promo__copy,
@@ -293,41 +293,41 @@ body {
 .scroll-promo--consultas .scroll-promo__shell {
   position: relative;
   background:
-    radial-gradient(circle at left center, rgba(255, 214, 112, 0.26), transparent 26%),
-    linear-gradient(135deg, rgba(26, 21, 9, 0.96), rgba(47, 27, 11, 0.92));
-  border-color: rgba(255, 214, 112, 0.26);
+    radial-gradient(circle at left center, rgba(255, 122, 24, 0.32), transparent 26%),
+    linear-gradient(135deg, rgba(20, 10, 8, 0.96), rgba(44, 20, 9, 0.92));
+  border-color: rgba(255, 159, 43, 0.3);
 }
 
 .scroll-promo--consultas .scroll-promo__eyebrow {
-  color: rgba(255, 214, 112, 0.88);
+  color: rgba(255, 159, 43, 0.9);
 }
 
 .scroll-promo--consultas .scroll-promo__shell h2 {
-  color: #fff0bd;
+  color: #ffe7c2;
 }
 
 .scroll-promo--consultas .scroll-promo__cta {
-  background: linear-gradient(135deg, #ffd670, #ffae61);
+  background: linear-gradient(135deg, #ff9f2b, #ff7a18);
 }
 
 .scroll-promo--fraude .scroll-promo__shell {
   position: relative;
   background:
-    radial-gradient(circle at right center, rgba(99, 210, 255, 0.2), transparent 28%),
-    linear-gradient(135deg, rgba(7, 25, 31, 0.96), rgba(13, 35, 48, 0.92));
-  border-color: rgba(99, 210, 255, 0.26);
+    radial-gradient(circle at right center, rgba(159, 107, 255, 0.24), transparent 28%),
+    linear-gradient(135deg, rgba(12, 8, 24, 0.96), rgba(22, 14, 36, 0.92));
+  border-color: rgba(159, 107, 255, 0.3);
 }
 
 .scroll-promo--fraude .scroll-promo__eyebrow {
-  color: rgba(120, 223, 255, 0.92);
+  color: rgba(159, 107, 255, 0.9);
 }
 
 .scroll-promo--fraude .scroll-promo__shell h2 {
-  color: #def7ff;
+  color: #eadcff;
 }
 
 .scroll-promo--fraude .scroll-promo__cta {
-  background: linear-gradient(135deg, #63d2ff, #7df0df);
+  background: linear-gradient(135deg, #9f6bff, #6bff7a);
 }
 
 @media (max-width: 780px) {
@@ -366,7 +366,7 @@ body {
   right: -90px;
   width: 280px;
   height: 280px;
-  background: radial-gradient(circle, rgba(255, 122, 168, 0.62), transparent 68%);
+  background: radial-gradient(circle, rgba(255, 122, 24, 0.6), transparent 68%);
 }
 
 .spotlight-b {
@@ -374,7 +374,7 @@ body {
   left: -120px;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(94, 200, 255, 0.48), transparent 68%);
+  background: radial-gradient(circle, rgba(159, 107, 255, 0.48), transparent 68%);
 }
 
 .grid-lines {
@@ -1259,6 +1259,8 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: blur(1.6px);
+  transform: scale(1.05);
 }
 
 .fb-comment-main {
@@ -1393,16 +1395,16 @@ body {
 
 .contact-fab-whatsapp {
   background:
-    linear-gradient(135deg, rgba(37, 211, 102, 0.22), rgba(12, 23, 18, 0.92)),
-    linear-gradient(135deg, rgba(255, 220, 126, 0.08), transparent 55%);
-  color: #c7ffe0;
+    linear-gradient(135deg, rgba(255, 122, 24, 0.28), rgba(14, 9, 20, 0.92)),
+    linear-gradient(135deg, rgba(107, 255, 122, 0.12), transparent 55%);
+  color: #ffe1b4;
 }
 
 .contact-fab-phone {
   background:
-    linear-gradient(135deg, rgba(99, 210, 255, 0.18), rgba(17, 24, 35, 0.92)),
-    linear-gradient(135deg, rgba(255, 220, 126, 0.08), transparent 55%);
-  color: #d7f2ff;
+    linear-gradient(135deg, rgba(159, 107, 255, 0.2), rgba(17, 12, 28, 0.92)),
+    linear-gradient(135deg, rgba(255, 122, 24, 0.12), transparent 55%);
+  color: #e6d5ff;
 }
 
 .contact-fab:hover {
@@ -1431,11 +1433,11 @@ body {
   position: relative;
   padding: 18px;
   border-radius: 24px;
-  border: 1px solid rgba(112, 247, 214, 0.28);
+  border: 1px solid rgba(255, 159, 43, 0.3);
   background:
-    radial-gradient(circle at top left, rgba(37, 211, 102, 0.16), transparent 34%),
-    radial-gradient(circle at top right, rgba(99, 210, 255, 0.12), transparent 30%),
-    linear-gradient(145deg, rgba(7, 14, 20, 0.98), rgba(13, 23, 29, 0.95));
+    radial-gradient(circle at top left, rgba(255, 122, 24, 0.2), transparent 34%),
+    radial-gradient(circle at top right, rgba(159, 107, 255, 0.16), transparent 30%),
+    linear-gradient(145deg, rgba(10, 8, 18, 0.98), rgba(18, 12, 28, 0.95));
   box-shadow: 0 28px 70px rgba(0, 0, 0, 0.48);
   backdrop-filter: blur(18px);
   overflow: hidden;
@@ -1446,7 +1448,7 @@ body {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(255, 214, 112, 0.12), transparent 32%, rgba(112, 247, 214, 0.1) 68%, transparent),
+    linear-gradient(90deg, rgba(255, 159, 43, 0.18), transparent 32%, rgba(159, 107, 255, 0.14) 68%, transparent),
     linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 45%);
   pointer-events: none;
 }
@@ -1471,22 +1473,22 @@ body {
   display: grid;
   place-items: center;
   background:
-    linear-gradient(145deg, rgba(37, 211, 102, 0.3), rgba(9, 37, 23, 0.96));
-  border: 1px solid rgba(112, 247, 214, 0.25);
+    linear-gradient(145deg, rgba(255, 122, 24, 0.35), rgba(20, 10, 28, 0.96));
+  border: 1px solid rgba(255, 159, 43, 0.28);
   box-shadow: inset 0 0 24px rgba(255, 255, 255, 0.05);
 }
 
 .comment-whatsapp-panel__badge svg {
   width: 28px;
   height: 28px;
-  fill: #ddffea;
+  fill: #ffe6c2;
 }
 
 .comment-whatsapp-panel__eyebrow {
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: rgba(112, 247, 214, 0.78);
+  color: rgba(255, 159, 43, 0.82);
   margin-bottom: 4px;
 }
 
@@ -1506,8 +1508,8 @@ body {
   min-height: 110px;
   padding: 15px 16px;
   border-radius: 18px;
-  border: 1px solid rgba(112, 247, 214, 0.18);
-  background: rgba(4, 10, 14, 0.72);
+  border: 1px solid rgba(159, 107, 255, 0.2);
+  background: rgba(6, 5, 12, 0.72);
   color: var(--ink);
   font: inherit;
   resize: vertical;
@@ -1520,8 +1522,8 @@ body {
 }
 
 .comment-whatsapp-panel__form textarea:focus {
-  border-color: rgba(112, 247, 214, 0.42);
-  box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.12);
+  border-color: rgba(255, 159, 43, 0.5);
+  box-shadow: 0 0 0 4px rgba(255, 122, 24, 0.16);
 }
 
 .comment-whatsapp-panel__form button {
@@ -1531,12 +1533,12 @@ body {
   border: 0;
   border-radius: 999px;
   background:
-    linear-gradient(135deg, rgba(37, 211, 102, 1), rgba(133, 255, 184, 0.96));
-  color: #062010;
+    linear-gradient(135deg, rgba(255, 122, 24, 1), rgba(255, 192, 107, 0.96));
+  color: #2a1205;
   font: inherit;
   font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 18px 34px rgba(37, 211, 102, 0.2);
+  box-shadow: 0 18px 34px rgba(255, 122, 24, 0.22);
 }
 
 .has-comment-panel .floating-contact {
@@ -1589,6 +1591,60 @@ body {
   background:
     linear-gradient(180deg, rgba(7, 9, 15, 0.12), rgba(7, 9, 15, 0.55)),
     linear-gradient(90deg, rgba(94, 200, 255, 0.08), transparent 40%, rgba(255, 134, 177, 0.06));
+}
+
+:where(a[href*="wa.me"]) {
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+:where(a[href*="wa.me"]) {
+  animation: wa-press 2.4s ease-in-out infinite;
+  transform-origin: center;
+  box-shadow:
+    0 16px 28px rgba(0, 0, 0, 0.35),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.35),
+    inset 0 2px 0 rgba(255, 255, 255, 0.08);
+}
+
+@keyframes wa-press {
+  0%,
+  55%,
+  100% {
+    transform: translateY(0) scale(1) perspective(600px);
+    box-shadow:
+      0 16px 28px rgba(0, 0, 0, 0.35),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.35),
+      inset 0 2px 0 rgba(255, 255, 255, 0.08);
+  }
+  65% {
+    transform: translateY(4px) scale(0.97) perspective(600px);
+    box-shadow:
+      0 8px 14px rgba(0, 0, 0, 0.4),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  }
+  75% {
+    transform: translateY(0) scale(1.01) perspective(600px);
+    box-shadow:
+      0 18px 32px rgba(0, 0, 0, 0.32),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.3),
+      inset 0 2px 0 rgba(255, 255, 255, 0.1);
+  }
+  85% {
+    transform: translateY(2px) scale(0.985) perspective(600px);
+    box-shadow:
+      0 12px 22px rgba(0, 0, 0, 0.36),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(a[href*="wa.me"]) {
+    animation: none;
+  }
 }
 
 .reveal {
