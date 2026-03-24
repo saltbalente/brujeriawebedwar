@@ -19,39 +19,65 @@ const toggleMysticBar = () => {
   mysticBar.classList.toggle("is-visible", window.scrollY > 60);
 };
 
-const toggleCommentWhatsAppPanel = () => {
-  if (!commentWhatsAppPanel || !thirdCommentTrigger) return;
-
-  const triggerTop = thirdCommentTrigger.getBoundingClientRect().top + window.scrollY;
-  const shouldShow = window.scrollY + window.innerHeight * 0.4 >= triggerTop;
-
-  commentWhatsAppPanel.classList.toggle("is-visible", shouldShow);
-  document.body.classList.toggle("has-comment-panel", shouldShow);
-};
-
 const setThirdCommentTrigger = () => {
   if (!commentsHost) return;
   thirdCommentTrigger = commentsHost.querySelectorAll(".fb-comment")[2] || null;
-  toggleCommentWhatsAppPanel();
 };
 
-const toggleScrollPromos = () => {
-  if (!guidanceSection || !processSection || !closingVideoSection) return;
+const initCommentPanelObserver = () => {
+  if (!commentWhatsAppPanel || !thirdCommentTrigger) return;
 
-  const currentLine = window.scrollY + 120;
-  const guidanceBottom = guidanceSection.offsetTop + guidanceSection.offsetHeight - 120;
-  const processTop = processSection.offsetTop - 40;
-  const closingTop = closingVideoSection.offsetTop - 40;
-  const showConsultationPromo = currentLine >= guidanceBottom && currentLine < processTop;
-  const showFraudPromo = currentLine >= processTop && currentLine < closingTop;
+  const commentObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const shouldShow = entry.isIntersecting;
+        commentWhatsAppPanel.classList.toggle("is-visible", shouldShow);
+        document.body.classList.toggle("has-comment-panel", shouldShow);
+      });
+    },
+    { rootMargin: "0px 0px -40% 0px", threshold: 0.1 }
+  );
 
-  if (consultationPromo) {
-    consultationPromo.classList.toggle("is-visible", showConsultationPromo);
-  }
+  commentObserver.observe(thirdCommentTrigger);
+};
 
-  if (fraudPromo) {
-    fraudPromo.classList.toggle("is-visible", showFraudPromo);
-  }
+const initScrollPromoObservers = () => {
+  if (!consultationPromo || !fraudPromo || !guidanceSection || !processSection || !closingVideoSection) return;
+
+  const consultObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        consultationPromo.classList.toggle("is-visible", entry.isIntersecting);
+      });
+    },
+    { rootMargin: "0px 0px -70% 0px", threshold: 0.1 }
+  );
+
+  const fraudObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        fraudPromo.classList.toggle("is-visible", entry.isIntersecting);
+      });
+    },
+    { rootMargin: "0px 0px -70% 0px", threshold: 0.1 }
+  );
+
+  consultObserver.observe(guidanceSection);
+  fraudObserver.observe(processSection);
+
+  const closingObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          consultationPromo.classList.remove("is-visible");
+          fraudPromo.classList.remove("is-visible");
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  closingObserver.observe(closingVideoSection);
 };
 
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -73,12 +99,8 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
 }
 
 toggleMysticBar();
-toggleScrollPromos();
 window.addEventListener("scroll", toggleMysticBar, { passive: true });
-window.addEventListener("scroll", toggleScrollPromos, { passive: true });
-window.addEventListener("scroll", toggleCommentWhatsAppPanel, { passive: true });
-window.addEventListener("resize", toggleCommentWhatsAppPanel);
-window.addEventListener("resize", toggleScrollPromos);
+window.addEventListener("resize", toggleMysticBar);
 
 if (commentWhatsAppForm && commentWhatsAppInput) {
   commentWhatsAppForm.addEventListener("submit", (event) => {
@@ -341,6 +363,7 @@ if (commentsHost) {
     commentsHost.appendChild(fragment);
     commentsHost.dataset.loaded = "true";
     setThirdCommentTrigger();
+    initCommentPanelObserver();
   };
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -362,7 +385,10 @@ if (commentsHost) {
   }
 
   setThirdCommentTrigger();
+  initCommentPanelObserver();
 }
+
+initScrollPromoObservers();
 
 if (lazyHeroVideo) {
   const loadHeroVideo = () => {
